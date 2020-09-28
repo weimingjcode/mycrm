@@ -6,14 +6,22 @@ package com.rong.mycrm.controller;/*
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class IndexController {
 
-    @RequestMapping("/test")
-//    @ResponseBody
+    @RequestMapping("/index")
     public String tests(){
         return "index";
+    }
+
+    @RequestMapping("/getCoursesOrderList")
+    public String getCoursesOrderList(){
+        return "courseorder/list";
+    }
+
+    @RequestMapping("/getStudentsOrderList")
+    public String getStudentsOrderList(){
+        return "studentsorder/list";
     }
 }
