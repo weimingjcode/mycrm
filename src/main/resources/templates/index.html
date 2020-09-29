@@ -74,6 +74,20 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
+
+        <script>
+            //Demo
+            layui.use('form', function(){
+                var form = layui.form;
+
+                //监听提交
+                form.on('submit(formDemo)', function(data){
+                    layer.msg(JSON.stringify(data.field));
+                    return false;
+                });
+            });
+        </script>
+
         <iframe name="content_iFrm" frameborder=”no” border=”0″ class="larry-iframe"
                 style="width: 100%;height: 100%;" src="/getCoursesOrderList"></iframe>
 
