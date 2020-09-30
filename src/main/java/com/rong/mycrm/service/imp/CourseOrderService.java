@@ -11,7 +11,9 @@ import com.rong.mycrm.service.ICourseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CourseOrderService implements ICourseOrderService{
@@ -20,12 +22,17 @@ public class CourseOrderService implements ICourseOrderService{
     CourseOrderMapper courseOrderMapper;
 
     @Override
-    public PageResult<CourseOrder> getCourseTableResult() {
+    public PageResult<CourseOrder> getCourseTableResult(int page,int limit) {
         PageResult<CourseOrder> pageResult = new PageResult<>();
         pageResult.setCode(0);
         pageResult.setMsg("请求成功！");
-        pageResult.setCount(10);
-        List<CourseOrder> list = courseOrderMapper.getCourseOrderList();
+        pageResult.setCount(limit);
+
+        Map<String,Object> paraMap = new HashMap<>();
+//        paraMap.put("condition",conditon);
+        paraMap.put("start",(page-1)*limit);
+        paraMap.put("size",limit);
+        List<CourseOrder> list = courseOrderMapper.getCourseOrderList(paraMap);
         pageResult.setData(list);
         return pageResult;
     }

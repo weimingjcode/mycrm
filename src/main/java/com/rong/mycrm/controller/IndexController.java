@@ -4,7 +4,6 @@ package com.rong.mycrm.controller;/*
  @create 2020/9/28
 */
 
-import com.rong.mycrm.mapper.CourseOrderMapper;
 import com.rong.mycrm.model.CourseOrder;
 import com.rong.mycrm.model.PageResult;
 import com.rong.mycrm.service.ICourseOrderService;
@@ -14,11 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -43,11 +38,20 @@ public class IndexController {
         return "studentsorder/list";
     }
 
+
+    @RequestMapping("/addCourseOrder")
+    public String addCourseOrder(){
+        return "courseorder/add";
+    }
+
     @RequestMapping("/getCourseTableResult")
     @ResponseBody
-    public PageResult<CourseOrder> getCourseTableResult(){
-        PageResult pageResult = courseOrderService.getCourseTableResult();
+    public PageResult<CourseOrder> getCourseTableResult(int page,int limit){
+        PageResult pageResult = courseOrderService.getCourseTableResult(page,limit);
         log.info("请求数据  getCourseTableResult");
         return  pageResult;
     }
+
+
+
 }

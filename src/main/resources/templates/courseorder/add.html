@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>添加</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>添加courseOder</legend>
+</fieldset>
+
+<form class="layui-form" action="" id="orderList">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="name"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">WeChat号码</label>
+            <div class="layui-input-inline">
+                <input type="text" name="wechat_no" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">WeChat备注</label>
+            <div class="layui-input-inline">
+                <input type="text" name="wechat_mark" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">QQ</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="qq_no" autocomplete="off" class="layui-input">
+
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-inline">
+                <!--lay-verify="required"  lay-verify="required|phone"-->
+                <input type="tel" name="tel"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">购买课程</label>
+            <div class="layui-input-inline">
+                <select name="modules"  lay-search="点击选择课程">
+                    <option value="java基础">java基础</option>
+                    <option value="java高级架构">java高级架构</option>
+                    <option value="linux脚本">linux脚本</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">购买日期</label>
+            <div class="layui-input-inline">
+                <!--lay-verify="date" placeholder="yyyy-MM-dd"-->
+                <input type="text" name="order_date" id="date" placeholder="年/月/日"
+                       autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">购买价格</label>
+            <div class="layui-input-inline">
+                <input type="text" name="course_price" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn" lay-submit="" lay-filter="demo1" onclick="doSave()">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    var $;
+    layui.use(['form', 'laydate'], function () {
+        var form = layui.form
+            , laydate = layui.laydate;
+        $=layui.jquery;
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+    });
+    
+    function doSave() {
+        // alert("save!")
+        $.post("/addCourseOrder",$("#orderList").serialize(),function (res) {
+            
+        });
+    }
+
+</script>
+
+</body>
+</html>

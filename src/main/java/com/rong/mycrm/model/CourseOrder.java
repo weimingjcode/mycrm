@@ -17,12 +17,13 @@ import java.util.Date;
 @Setter
 public class CourseOrder {
     int id;
-    String name;
+    private String name = "aaaa";
     String wechat_mark;
     String uuid;
     String qq_no;
     String course_name;
     String wechat_no;
+    String tel;
     BigDecimal course_price;
     Date order_date;
 }

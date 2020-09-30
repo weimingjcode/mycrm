@@ -3,6 +3,6 @@
 
 <mapper namespace="com.rong.mycrm.mapper.CourseOrderMapper">
     <select id="getCourseOrderList" parameterType="Map" resultType="CourseOrder">
-        SELECT * FROM t_course_order limit 10
+        SELECT * FROM t_course_order limit #{start},#{size}
     </select>
 </mapper>

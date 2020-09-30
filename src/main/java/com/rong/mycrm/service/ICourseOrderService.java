@@ -7,7 +7,9 @@ package com.rong.mycrm.service;/*
 import com.rong.mycrm.model.CourseOrder;
 import com.rong.mycrm.model.PageResult;
 
+import java.util.Map;
+
 public interface ICourseOrderService {
 
-    public PageResult<CourseOrder> getCourseTableResult();
+    public PageResult<CourseOrder> getCourseTableResult(int page,int limit);
 }
